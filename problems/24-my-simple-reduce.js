@@ -32,10 +32,20 @@ console.log(result3); // 8
 AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 - Explain, but don't code, how you would refactor this problem to take in an
   optional initial accumulator
+
+  Check if there is a third argument provided, if it is set the accumulator to the
+  third argument, otherwise just use the first element in the array
 *******************************************************************************/
 
-let mySimpleReduce = function() {
+let mySimpleReduce = function (arr, cb) {
+    let accum = arr[0];
 
+    for (let i = 1; i < arr.length; i++) {
+        let el = arr[i];
+        accum = cb(accum, el);
+    }
+
+    return accum;
 };
 
 
