@@ -37,8 +37,17 @@ let result6 = one(['apple', 'dog', 'food', 'cat'], function(el, idx) {
 console.log(result6);   // true
 *******************************************************************************/
 
-let one = function() {
+let one = function (arr, cb) {
+    let count = 0;
 
+    arr.forEach(function (el, i) {
+        let resIsTrue = cb(el, i);
+        if (resIsTrue) {
+            count++;
+        }
+    });
+
+    return count === 1;
 };
 
 
